@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+
+    <title>Prediksi Hujan Esok Hari di Australia</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="./main.html">Forecaster</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="./main.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <!-- Button trigger modal -->
+              <button
+                class="btn btn-success px-lg-2"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+              >
+                About
+              </button>
+            </li>
+            <li class="nav-item">
+              <!-- Button trigger modal -->
+              <button
+                class="btn btn-success px-lg-2"
+                data-bs-toggle="modal"
+                data-bs-target="#team"
+              >
+                Team
+              </button>
+            </li>
+            <li class="nav-item">
+              <!-- Button trigger modal -->
+              <button
+                class="btn btn-success px-lg-2"
+                data-bs-toggle="modal"
+                data-bs-target="#purpose"
+              >
+                Purpose
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Prediksi Hujan Esok Hari di Australia
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Ini hanyalah suatu alat untuk memprediksi hujan di esok hari
+            terutama di daerah Australia. Prediksi alatnya menggunakan algoritma
+            <i> logistic regression </i> dan <i>SVM</i>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Team Modal -->
+    <div
+      class="modal fade"
+      id="team"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Kelompok 4</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <ol>
+              <li>Ari Sandy Kurniawan - PYTN-KS05-005</li>
+              <li>Muhammad Zhafran Bahij - PYTN-KS05-008</li>
+              <li>Roikhatul Miskiyah - PYTN-KS05-010</li>
+            </ol>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Purpose Modal -->
+    <div
+      class="modal fade"
+      id="purpose"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Alasan kita membuat projek ini?
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            Untuk menyelesaikan projek akhir tahap 2 yaitu memprediksi hujan di
+            Australia dengan algoritma logistic regression dan SVM.
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <h1 class="my-3">Prediksi Hujan Esok Hari di Australia</h1>
+    </div>
+    <div class="container my-3 row">
+      <div class="col-12 col-md-6">
+        <form
+          class="row g-3 my-2"
+          action="{{ url_for('predict') }}"
+          method="post"
+        >
+          <div class="mb-3">
+            <label class="form-label">Algoritma </label>
+            <select
+              id="algorithm"
+              name="algorithm"
+              class="form-select"
+              aria-label="Default select example"
+            >
+              <option value="0" selected>Logistic Regression</option>
+              <option value="1">SVM</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">{{ columns[0] }} </label>
+            <input
+              list="tabibito"
+              name="{{ columns[0] }}"
+              id="{{ columns[0] }}"
+              class="form-control"
+              value="0"
+            />
+            <datalist id="tabibito">
+              {%for i in range(0, lenplaces)%}
+              <option value="{{ i }}">{{ places[i] }}</option>
+              {%endfor%}
+            </datalist>
+          </div>
+          {%for i in range(1, len-3)%}
+          <div class="mb-3">
+            <label for="{{ columns[i] }}" class="form-label"
+              >{{ columns[i] }}</label
+            >
+            <input
+              type="text"
+              name="{{ columns[i] }}"
+              placeholder="4"
+              id="{{ columns[i] }}"
+              class="form-control"
+              min="0"
+              value="0"
+              required
+            />
+          </div>
+          {%endfor%}
+          <div class="mb-3">
+            <label for="date" class="form-label">date</label>
+            <input
+              type="date"
+              name="date"
+              placeholder="4"
+              id="date"
+              class="form-control"
+              min="0"
+              value="0"
+              required
+            />
+          </div>
+          <div class="col-12 flex justify-content-center">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+      </div>
+      <div class="px-md-4 py-5 col-12 col-md-6">
+        <div class="alert alert-danger" role="alert">{{ alert_message }}</div>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-success">
+            Rain Tomorrow : <span>{{ prediction_text }}</span> <br />
+            Algorithm : <span>{{ algorithm }}</span>
+          </li>
+          <li class="list-group-item list-group-item-warning">
+            {{columns[0]}} :
+            <span>{{ place }}</span> <br />
+            {%for i in range(1, len)%} {{columns[i]}} :
+            <span>{{ float_features[i] }}</span> <br />
+            {%endfor%}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
