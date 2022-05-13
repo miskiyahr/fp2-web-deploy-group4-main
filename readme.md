@@ -1,3 +1,10 @@
+# Project 2
+### Kelompok 4
+1. Ari Sandy Kurniawan - PYTN-KS05-005
+2. Muhammad Zhafran Bahij - PYTN-KS05-008
+3. Roikhatul Miskiyah - PYTN-KS05-010
+
+
 # Deploy Model
 
 ## Starter for Flask run
