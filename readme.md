@@ -1,5 +1,13 @@
 # Deploy Model
 
+## Starter for Flask run
+
+### If you use git bash
+
+1. export FLASK_APP=app
+2. export FLASK_ENV=development
+3. flask run
+
 ## Deploy to Heroku
 
 1. Pertama login dulu, ini hanya sekali saja

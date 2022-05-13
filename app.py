@@ -18,10 +18,18 @@ columns = ['Location', 'MinTemp', 'MaxTemp', 'Rainfall', 'Evaporation', 'Sunshin
 
 places = ['Adelaide', 'Albany', 'Albury', 'AliceSprings', 'BadgerysCreek', 'Ballarat', 'Bendigo', 'Brisbane', 'Cairns', 'Canberra', 'Cobar', 'CoffsHarbour', 'Dartmoor', 'Darwin', 'GoldCoast', 'Hobart', 'Katherine', 'Launceston', 'Melbourne', 'MelbourneAirport', 'Mildura', 'Moree', 'MountGambier', 'MountGinini', 'Newcastle', 'Nhil', 'NorahHead', 'NorfolkIsland', 'Nuriootpa', 'PearceRAAF', 'Penrith', 'Perth', 'PerthAirport', 'Portland', 'Richmond', 'Sale', 'SalmonGums', 'Sydney', 'SydneyAirport', 'Townsville', 'Tuggeranong', 'Uluru', 'WaggaWagga', 'Walpole', 'Watsonia', 'Williamtown', 'Witchcliffe', 'Wollongong', 'Woomera']
 
+descriptions =  ['Weather Station', 'Minimum temperature (celsius)', 'Maximum temperature (celsius)', 
+        'Amount Rainfall per day (mm)', 'evaoration for 24 hour (mm) ', 'bright sunshine in the day (hours)',
+        'Strongest Wind speed (km/h)', 'Wind Speed in 10 minutes to 9am (km/h)', 
+        'Wind Speed in 10 minutes to 3pm (km/h)', 'humidity at 9am (percent)', 'humidity at 3pm (percent)',
+        'Atmospheric pressure at 9am (hpa)', 'Atmospheric pressure at 3pm (hpa)',
+        'Fraction of sky obscured by cloud at 9am (oktas)', 'Fraction of sky obscured by cloud at 3pm (oktas)', 
+        'Temperatur 3pm (celsius)' ,'Rain or not (0 = no, 1 = yes)']
+
 # Rute
 @app.route('/')
 def main():
-  return(flask.render_template('main.html', len = len(columns), columns = columns, float_features = columns, algorithm='algorithm', places = places, lenplaces = len(places), place="Location"))
+  return(flask.render_template('main.html', descriptions = descriptions, len = len(columns), columns = columns, float_features = columns, algorithm='algorithm', places = places, lenplaces = len(places), place="Location"))
 if __name__ == '__main__':
   app.run(debug=True)
 
@@ -57,7 +65,8 @@ def predict():
       algorithm='algorithm',
       places = places,
       lenplaces = len(places),
-      place="Location"
+      place="Location",
+      descriptions = descriptions,
     )
 
   final_features = [np.array(float_features)]
@@ -79,5 +88,6 @@ def predict():
     algorithm = name_predict[in_predict],
     places = places,
     lenplaces = len(places),
-    place=places[int(float_features[0])]
+    place=places[int(float_features[0])],
+    descriptions = descriptions,
   )
